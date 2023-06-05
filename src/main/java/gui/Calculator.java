@@ -143,17 +143,6 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
                             this.displayText.setText(String.valueOf(res));
                     }
                 }
-                else if(text.contains("-")){
-                    String[] nums = text.split("\\-");
-                    float res = Float.parseFloat(nums[0]) - Float.parseFloat(nums[1]);
-                    if(res%1 == 0){
-                        int nres = (int)res;
-                        this.displayText.setText(String.valueOf(nres));
-                    }  
-                    else{
-                            this.displayText.setText(String.valueOf(res));
-                    }
-                }
                 else if(text.contains("*")){
                     String[] nums = text.split("\\*");
                     float res = Float.parseFloat(nums[0]) * Float.parseFloat(nums[1]);
@@ -178,6 +167,31 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
                         }    
                         else{
                             this.displayText.setText(String.valueOf(res));
+                        }
+                    }
+                }
+                else if(text.contains("-")){
+                    if(text.substring(0,1).equals("-")){
+                        text = text.substring(1,text.length());
+                        String[] nums = text.split("\\-");
+                        float res = - Float.parseFloat(nums[0]) - Float.parseFloat(nums[1]);
+                        if(res%1 == 0){
+                            int nres = (int)res;
+                            this.displayText.setText(String.valueOf(nres));
+                        }  
+                        else{
+                                this.displayText.setText(String.valueOf(res));
+                        }
+                    }
+                    else{
+                        String[] nums = text.split("\\-");
+                        float res = Float.parseFloat(nums[0]) - Float.parseFloat(nums[1]);
+                        if(res%1 == 0){
+                            int nres = (int)res;
+                            this.displayText.setText(String.valueOf(nres));
+                        }  
+                        else{
+                                this.displayText.setText(String.valueOf(res));
                         }
                     }
                 }
